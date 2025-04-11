@@ -1,7 +1,18 @@
-export default function Home() {
+import HeroesList from "@/components";
+import { IHeroData } from "@/interfaces/heroes";
+import styles from "./page.module.scss";
+async function getHeroes(): Promise<IHeroData[]> {
+  const res = await fetch(`${process.env.DOMAIN_ORIGIN}/heroes`);
+
+  return res.json();
+}
+
+export default async function Home() {
+  const heroes = await getHeroes();
+
   return (
-    <div>
-      <h1>teste</h1>
-    </div>
+    <main className={styles.main}>
+      <HeroesList heroes={heroes} />;
+    </main>
   );
 }
