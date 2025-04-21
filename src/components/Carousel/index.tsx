@@ -27,7 +27,6 @@ export default function Carousel({ heroes, activeId }: IProps) {
   const [activeIndex, setActiveIndex] = useState(
     heroes.findIndex((hero) => hero.id === activeId) - 1
   );
-  debugger;
 
   const [startInteractionPosition, setStartInteractionPosition] =
     useState<number>(0);

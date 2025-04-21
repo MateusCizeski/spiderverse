@@ -7,7 +7,7 @@ interface IProps {
   };
 }
 
-async function getHeroesData(): Promise<{ data: IHeroData[] }> {
+async function getHeroesData(): Promise<IHeroData[]> {
   const res = await fetch(`${process.env.DOMAIN_ORIGIN}/heroes`);
 
   return res.json();
@@ -16,5 +16,5 @@ async function getHeroesData(): Promise<{ data: IHeroData[] }> {
 export default async function Hero({ params: { id } }: IProps) {
   const heroes = await getHeroesData();
 
-  return <Carousel heroes={heroes.data} activeId={id} />;
+  return <Carousel heroes={heroes} activeId={id} />;
 }
